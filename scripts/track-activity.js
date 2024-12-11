@@ -1,5 +1,5 @@
 // Base API URL
-const baseUrl = 'https://web-production-dff5.up.railway.app/';
+const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Endpoint URL for fetching user activities
 const USER_ACTIVITY_API_URL = `${BASE_API_URL}/api/user/activity/`;

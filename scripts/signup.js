@@ -1,5 +1,5 @@
 // Base API URL
-const baseUrl = 'https://web-production-dff5.up.railway.app/';
+const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Define the endpoint URL for user signup
 const SIGNUP_API_URL = `${BASE_API_URL}/api/signup/`;

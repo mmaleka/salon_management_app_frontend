@@ -1,5 +1,5 @@
 // Base URL for the API
-const baseUrl = 'https://web-production-dff5.up.railway.app/';
+const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // API URL for user profile
 const apiUrls = {

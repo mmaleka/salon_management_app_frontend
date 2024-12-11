@@ -1,5 +1,5 @@
 // Define the base URL for the API
-const baseUrl = 'https://web-production-dff5.up.railway.app/';
+const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Define the endpoint URLs using the base URL
 const POINTS_API_URL = `${API_BASE_URL}/api/profile/points/`;
