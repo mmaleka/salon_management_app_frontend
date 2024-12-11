@@ -1,51 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Base URL for the API
+const baseUrl = 'https://web-production-dff5.up.railway.app/';
 
-    // Check if the JWT token is present in localStorage
-    const token = localStorage.getItem('accessToken');
-  
-    if (token) {
-      // User is logged in; hide the Sign Up button
-      document.getElementById('signup-button').style.display = 'none';
-    }
-  
-  
-    // Example URL for fetching user points (adjust the URL as necessary)
-    const apiUrl = 'http://127.0.0.1:8080/api/user/profile/';
-  
-    // Fetch user points from the backend
-    axios.get(apiUrl, {
-      headers: {
-        // Authorization: 'Bearer ' +  localStorage.getItem('accessToken'), // Assuming you store the JWT token in localStorage
-        Authorization: `Bearer ${token}`,
-      }
-    })
+// API URLs
+const apiUrls = {
+  userProfile: `${baseUrl}/api/user/profile/`,
+  products: `${baseUrl}/api/products/`,
+};
+
+// Event listener for when the DOM content is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if the JWT token is present in localStorage
+  const token = localStorage.getItem('accessToken');
+
+  if (token) {
+    // User is logged in; hide the Sign Up button
+    document.getElementById('signup-button').style.display = 'none';
+  }
+
+  // Fetch user points from the backend
+  axios.get(apiUrls.userProfile, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
     .then(response => {
       const points = response.data.points_balance;
       console.log("points: ", points);
-      
     })
     .catch(error => {
       console.error('Error fetching points:', error);
     });
-
 });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-// The API endpoint for fetching products
-const apiUrl = 'http://127.0.0.1:8080/api/products/';
-
 // Function to fetch products and display them
-function fetchProducts() {
-    axios.get(apiUrl)
-    .then(response => {
+document.addEventListener('DOMContentLoaded', function () {
+  function fetchProducts() {
+    axios.get(apiUrls.products)
+      .then(response => {
         const products = response.data;
         displayProducts(products);
-    })
-    .catch(error => {
+      })
+      .catch(error => {
         console.error('Error fetching products:', error);
-    });
-}
+      });
+  }
 
   function displayProducts(products) {
     const productContainer = document.getElementById('productContainer');
@@ -83,9 +81,4 @@ function fetchProducts() {
 
   // Call the fetchProducts function when the page loads
   fetchProducts();
-
-
 });
-  
-
-  

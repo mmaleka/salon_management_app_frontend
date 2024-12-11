@@ -1,3 +1,12 @@
+// Base URL for the API
+const baseUrl = 'https://web-production-dff5.up.railway.app/';
+
+// API URLs
+const apiUrls = {
+  userProfile: `${baseUrl}/api/user/profile/`,
+  confirmVisit: `${baseUrl}/api/confirm-visit/`,
+};
+
 // Function to show Bootstrap toast notifications
 let toast;
 
@@ -43,27 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Example URL for fetching user points
-  const apiUrl = 'http://127.0.0.1:8080/api/user/profile/';
-
-  axios.get(apiUrl, {
+  // Fetch user points from the backend
+  axios.get(apiUrls.userProfile, {
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   })
-  .then(response => {
-    const points = response.data.points_balance;
-    console.log("Points: ", points);
+    .then(response => {
+      const points = response.data.points_balance;
+      console.log("Points: ", points);
 
-    const pointsDisplay = document.getElementById('points-balance');
-    if (pointsDisplay) {
-      pointsDisplay.innerText = `Your Points: ${points}`;
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching points:', error);
-    showToast('Error', 'Failed to fetch points.', false);
-  });
+      const pointsDisplay = document.getElementById('points-balance');
+      if (pointsDisplay) {
+        pointsDisplay.innerText = `Your Points: ${points}`;
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching points:', error);
+      showToast('Error', 'Failed to fetch points.', false);
+    });
 });
 
 // Confirm Visit Form Submission
@@ -76,29 +83,28 @@ document.getElementById('confirmVisitForm').addEventListener('submit', (event) =
   // Clear previous message
   document.getElementById('message').innerText = '';
 
-  axios.post('http://127.0.0.1:8080/api/confirm-visit/', {
-    password: adminPassword
+  axios.post(apiUrls.confirmVisit, {
+    password: adminPassword,
   }, {
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   })
-  .then(response => {
-    console.log("response: ", response);
-    
-    document.getElementById('message').innerText = response.data.message;
-    showToast('Success', response.data.message, true);
+    .then(response => {
+      console.log("response: ", response);
 
-    // Update the points balance display
-    const pointsMatch = response.data.points_balance;
-    if (pointsMatch) {
-      document.getElementById('points-balance').innerText = `Your Points: ${pointsMatch}`;
-    }
+      document.getElementById('message').innerText = response.data.message;
+      showToast('Success', response.data.message, true);
 
-  })
-  .catch(error => {
-    const errorMsg = error.response?.data?.detail || 'Invalid password or request failed.';
-    document.getElementById('message').innerText = `Error: ${errorMsg}`;
-    showToast('Error', errorMsg, false);
-  });
+      // Update the points balance display
+      const pointsMatch = response.data.points_balance;
+      if (pointsMatch) {
+        document.getElementById('points-balance').innerText = `Your Points: ${pointsMatch}`;
+      }
+    })
+    .catch(error => {
+      const errorMsg = error.response?.data?.detail || 'Invalid password or request failed.';
+      document.getElementById('message').innerText = `Error: ${errorMsg}`;
+      showToast('Error', errorMsg, false);
+    });
 });

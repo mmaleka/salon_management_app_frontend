@@ -1,5 +1,8 @@
+// Base API URL
+const baseUrl = 'https://web-production-dff5.up.railway.app/';
+
 // Define the endpoint URL for fetching rewards data
-const REWARDS_API_URL = 'http://127.0.0.1:8080/api/user/profile/';
+const REWARDS_API_URL = `${BASE_API_URL}/api/user/profile/`;
 
 // Function to fetch and update referral code and total points
 async function fetchRewards() {
@@ -20,17 +23,11 @@ async function fetchRewards() {
     });
 
     // Extract points balance and referral code from the response
-    // const { points_balance, referral_code } = response.data;
     const { username, first_name, last_name, email, points_balance, referral_code } = response.data;
     console.log("referral_code: ", referral_code);
-    
-
-    // Update total points
-    // document.getElementById('total-points').textContent = points_balance;
 
     // Update referral code
     document.getElementById('referral-code').textContent = referral_code;
-    // document.getElementById('referral-code').innerHTML = `<strong>Your Referral Code:</strong> ${referral_code}` ;
   } catch (error) {
     console.error('Error fetching rewards data:', error);
 

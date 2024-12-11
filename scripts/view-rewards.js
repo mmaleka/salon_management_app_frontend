@@ -1,3 +1,10 @@
+// Define the base URL for the API
+const baseUrl = 'https://web-production-dff5.up.railway.app/';
+
+// Define the endpoint URLs using the base URL
+const POINTS_API_URL = `${API_BASE_URL}/api/profile/points/`;
+const REDEEM_API_URL = `${API_BASE_URL}/api/redeem-reward/`;
+
 // Function to show Bootstrap toast notifications
 function showToast(title, message, isSuccess = true) {
   const toastElement = document.getElementById('notificationToast');
@@ -16,11 +23,6 @@ function showToast(title, message, isSuccess = true) {
   const toast = new bootstrap.Toast(toastElement);
   toast.show();
 }
-
-
-// Define the endpoint URLs
-const POINTS_API_URL = 'http://127.0.0.1:8080/api/profile/points/';
-const REDEEM_API_URL = 'http://127.0.0.1:8080/api/redeem-reward/';
 
 // Function to fetch and update total points
 async function fetchPoints() {

@@ -1,3 +1,9 @@
+// Base API URL
+const baseUrl = 'https://web-production-dff5.up.railway.app/';
+
+// Define the endpoint URL for user signup
+const SIGNUP_API_URL = `${BASE_API_URL}/api/signup/`;
+
 // Add an event listener to the form
 document.getElementById('signupForm').addEventListener('submit', function(event) {
     event.preventDefault();  // Prevent the default form submission behavior
@@ -17,14 +23,14 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     };
 
     // Send the data to the backend using Axios
-    axios.post('http://127.0.0.1:8080/api/signup/', formData)
+    axios.post(SIGNUP_API_URL, formData)
         .then(response => {
             console.log(response.data);  // Handle success
             alert('Signup successful!');
-            window.location.href = `login.html?username=${username}`;
+            window.location.href = `login.html?username=${encodeURIComponent(username)}`;
         })
         .catch(error => {
-            console.error('There was an error!', error.response.data);
-            alert('Signup failed: ' + error.response.data.error);
+            console.error('There was an error!', error.response?.data);
+            alert('Signup failed: ' + (error.response?.data?.error || 'An unknown error occurred.'));
         });
 });
