@@ -2,7 +2,7 @@
 const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Endpoint URLs
-const PROFILE_API_URL = `${BASE_API_URL}/api/user/profile/`;
+const PROFILE_API_URL = `${baseUrl}/api/user/profile/`;
 
 // Function to fetch profile data
 async function fetchProfileData() {

@@ -2,7 +2,7 @@
 const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Define the endpoint URL for user signup
-const SIGNUP_API_URL = `${BASE_API_URL}/api/signup/`;
+const SIGNUP_API_URL = `${baseUrl}/api/signup/`;
 
 // Add an event listener to the form
 document.getElementById('signupForm').addEventListener('submit', function(event) {

@@ -2,7 +2,7 @@
 const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Endpoint URL for fetching user activities
-const USER_ACTIVITY_API_URL = `${BASE_API_URL}/api/user/activity/`;
+const USER_ACTIVITY_API_URL = `${baseUrl}/api/user/activity/`;
 
 // Fetch and display user activities when the page loads
 document.addEventListener('DOMContentLoaded', () => {

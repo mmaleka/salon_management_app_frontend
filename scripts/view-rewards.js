@@ -2,8 +2,8 @@
 const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Define the endpoint URLs using the base URL
-const POINTS_API_URL = `${API_BASE_URL}/api/profile/points/`;
-const REDEEM_API_URL = `${API_BASE_URL}/api/redeem-reward/`;
+const POINTS_API_URL = `${baseUrl}/api/profile/points/`;
+const REDEEM_API_URL = `${baseUrl}/api/redeem-reward/`;
 
 // Function to show Bootstrap toast notifications
 function showToast(title, message, isSuccess = true) {

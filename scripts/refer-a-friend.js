@@ -2,7 +2,7 @@
 const baseUrl = 'https://web-production-dff5.up.railway.app';
 
 // Define the endpoint URL for fetching rewards data
-const REWARDS_API_URL = `${BASE_API_URL}/api/user/profile/`;
+const REWARDS_API_URL = `${baseUrl}/api/user/profile/`;
 
 // Function to fetch and update referral code and total points
 async function fetchRewards() {
